@@ -15,8 +15,7 @@
 
         devShells.default = mkShell {
           name = "watgbridge-dev";
-          nativeBuildInputs = [ go gopls ];
-          buildInputs = [ libwebp ];
+          nativeBuildInputs = [ go gopls libwebp ];
         };
 
         packages = rec {
