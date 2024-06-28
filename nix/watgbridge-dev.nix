@@ -1,18 +1,13 @@
 { lib
 , buildGoModule
-, fetchFromGitHub
 }:
 
 buildGoModule rec {
   pname = "watgbridge-dev";
   version = "2.0.0";
 
-  src = fetchFromGitHub {
-    owner = "watgbridge";
-    repo = "watgbridge";
-    rev = "main";
-    hash = "sha256-QH9H7m96f6tS3DeWB0e5HcljDMLIyUy2SJHk94Q/cD0=";
-  } + "/src/cmd/watgbridge";
+  src = ../.;
+  # goPackagePath = ../.;
 
   ldflags = [ "-s" "-w" ];
 

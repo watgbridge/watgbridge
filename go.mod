@@ -1,10 +1,10 @@
-module github.com/watgbridge/watgbridge/src/pkg/config
+module github.com/watgbridge/watgbridge
 
 go 1.22.3
 
 require (
 	github.com/spf13/viper v1.19.0
-	golang.org/x/exp v0.0.0-20230905200255-921286631fa9
+	golang.org/x/exp v0.0.0-20240613232115-7f521ea00fb8
 )
 
 require (
