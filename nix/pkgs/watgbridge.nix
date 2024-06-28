@@ -11,9 +11,9 @@ buildGoApplication rec {
     owner = "watgbridge";
     repo = "watgbridge";
     rev = "v${version}";
-    sha256 = lib.fakeHash;
+    sha256 = "sha256-+Xx1aH4jNMjNplT/i4CKdAr6NQkv6qPBvnQ7zTd6098=";
   };
-  pwd = src + "./.";
+  pwd = src;
 
   ldflags = [
     "-s"
