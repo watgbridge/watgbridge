@@ -35,9 +35,9 @@
         };
 
         packages = rec {
-          watgbridge = (pkgs.callPackage ./nix/watgbridge.nix {});
-          # vX.Y.Z for watgbridge-dev means git after vX.Y.Z release
-          watgbridge-dev = (pkgs.callPackage ./nix/watgbridge-dev.nix {});
+          watgbridge = (pkgs.callPackage ./nix/pkgs/watgbridge.nix {});
+          # # vX.Y.Z for watgbridge-dev means git after vX.Y.Z release
+          watgbridge-dev = (pkgs.callPackage ./nix/pkgs/watgbridge-dev.nix {});
           default = watgbridge;
         };
 

@@ -1,26 +1,25 @@
 { lib
 , buildGoApplication
-, buildGoModule
 , fetchFromGitHub
 }:
 
-buildGoModule rec {
+buildGoApplication rec {
   pname = "watgbridge";
   version = "2.0.0";
 
-  # src = fetchFromGitHub {
-  #   owner = "watgbridge";
-  #   repo = "watgbridge";
-  #   rev = "v${version}";
-  #   hash = "sha256-QH9H7m96f6tS3DeWB0e5HcljDMLIyUy2SJHk94Q/cD0=";
-  # } + "/src/cmd/watgbridge";
+  src = fetchFromGitHub {
+    owner = "watgbridge";
+    repo = "watgbridge";
+    rev = "v${version}";
+    sha256 = lib.fakeHash;
+  };
+  pwd = src + "./.";
 
-  src = ../src/cmd/watgbridge;
-  # modules = "${src}/gomod2nix.toml";
-  #
-  ldflags = [ "-s" "-w" ];
-
-  vendorHash = null;
+  ldflags = [
+    "-s"
+    "-w"
+    "-X 'github.com/watgbridge/watgbridge/cmd/watgbridge/state.VERSION=${version}'"
+  ];
 
   meta = with lib; rec {
     description = "A bridge between WhatsApp and Telegram written in Golang";
