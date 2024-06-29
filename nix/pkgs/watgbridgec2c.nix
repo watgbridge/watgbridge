@@ -11,7 +11,7 @@ buildGoApplication rec {
     owner = "watgbridge";
     repo = "watgbridge";
     rev = "watgbridgec2c-v${version}";
-    sha256 = "sha256-+Xx1aH4jNMjNplT/i4CKdAr6NQkv6qPBvnQ7zTd6098=";
+    sha256 = "sha256-/krZDBCyPI5YURFGvO2As77X8Lh7GZxw1vn6zmi9oS4=";
   };
   pwd = src;
 
