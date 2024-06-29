@@ -9,5 +9,6 @@ import (
 
 func main() {
 	fmt.Printf("%#v\n", binConfig.AllConfigOptions)
-	fmt.Println("VERSION:", state.VERSION)
+	fmt.Println("Version:", state.Version)
+	fmt.Println("Supports Update :", state.SupportsBinaryUpdates)
 }
