@@ -1,13 +1,33 @@
 { lib
 , buildGoApplication
+, nix-filter
 }:
 
-buildGoApplication rec {
+let
+
+  localSource = nix-filter {
+    name = "watgbridgec2c";
+    root = ../../.;
+    exclude = [
+      "flake.nix"
+      "flake.lock"
+      "README.md"
+      ".github"
+      "nix"
+      ".envrc"
+      ".gitignore"
+      "Dockerfile"
+      "LICENSE"
+      ./cmd/watgbridgec2c
+    ];
+  };
+
+in buildGoApplication rec {
   pname = "watgbridgec2c-dev";
   version = "2.0.0";
 
-  pwd = ../../.;
-  src = ../../.;
+  pwd = localSource;
+  src = localSource;
 
   subPackages = [ "cmd/watgbridgec2c" ];
 
