@@ -41,9 +41,9 @@
 
       packages = rec {
         # # vX.Y.Z for watgbridge means git after watgbridge-vX.Y.Z release
-        watgbridge = (pkgs.callPackage ./nix/pkgs/watgbridge-dev.nix { inherit nix-filter; });
+        watgbridge = (pkgs.callPackage ./nix/pkgs/watgbridge-dev.nix { inherit nix-filter self; });
         # # vX.Y.Z for watgbridgec2c means git after watgbridgec2c-vX.Y.Z release
-        watgbridgec2c = (pkgs.callPackage ./nix/pkgs/watgbridgec2c-dev.nix { inherit nix-filter; });
+        watgbridgec2c = (pkgs.callPackage ./nix/pkgs/watgbridgec2c-dev.nix { inherit nix-filter self; });
         default = watgbridge;
       };
 

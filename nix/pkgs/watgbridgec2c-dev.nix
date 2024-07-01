@@ -1,6 +1,7 @@
 { lib
 , buildGoApplication
 , nix-filter
+, self
 }:
 
 let

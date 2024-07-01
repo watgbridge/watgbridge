@@ -1,6 +1,7 @@
 { lib
 , buildGoApplication
 , nix-filter
+, self
 }:
 
 let
@@ -22,9 +23,18 @@ let
     ];
   };
 
+  devVersion = (
+    if (builtins.hasAttr "rev" self) then
+      self.rev
+    else if (builtins.hasAttr "dirtyRev" self) then
+      self.dirtyRev
+    else
+      "dev"
+  );
+
 in buildGoApplication rec {
   pname = "watgbridge-dev";
-  version = "2.0.0";
+  version = devVersion;
 
   pwd = localSource;
   src = localSource;
@@ -34,7 +44,7 @@ in buildGoApplication rec {
   ldflags = [
     "-s"
     "-w"
-    ''-X "github.com/watgbridge/watgbridge/cmd/watgbridge/state.Version=${version}-dev"''
+    ''-X "github.com/watgbridge/watgbridge/cmd/watgbridge/state.Version=${version}"''
     ''-X "github.com/watgbridge/watgbridge/cmd/watgbridge/state.SupportsBinaryUpdatesStr=false"''
   ];
 
